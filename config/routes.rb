@@ -3,4 +3,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  
+  resources :users do
+    member do
+      get "report"
+    end
+  end
+
+  resources :guys do
+    get "ban", on: :member
+  end
+  
+  
+
 end
