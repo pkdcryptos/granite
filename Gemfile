@@ -64,3 +64,6 @@ end
 # For compiling and bundling JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker"
 gem "responders"
+
+gem 'react-rails'
+
