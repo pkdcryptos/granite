@@ -20,6 +20,8 @@ const App = () => {
     return <h1>Loading...</h1>;
   }
 
+  logger.info("app in action");
+
   return (
     <Router>
       <Switch>
