@@ -22,7 +22,7 @@ class Task < ApplicationRecord
 
     def slug_not_changed
       if slug_changed? && self.persisted?
-        errors.add(:slug, "is immutable!")
+        errors.add(:slug, t("task.slug.immutable"))
       end
     end
 end
