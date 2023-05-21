@@ -18,10 +18,11 @@ class Task < ApplicationRecord
 
         itr += 1
       end
-      def slug_not_changed
-        if slug_changed? && self.persisted?
-          errors.add(:slug, t("task.slug.immutable"))
-        end
+    end
+
+    def slug_not_changed
+      if slug_changed? && self.persisted?
+        errors.add(:slug, t("task.slug.immutable"))
       end
     end
 end
