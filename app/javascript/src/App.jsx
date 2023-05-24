@@ -16,6 +16,7 @@ const App = () => {
     initializeLogger();
     registerIntercepts();
     setAuthHeaders(setLoading);
+    logger.info("App.jsx- useEffect call");
   }, []);
 
   if (loading) {

@@ -15,8 +15,12 @@ const setAuthHeaders = (setLoading = () => null) => {
       .querySelector('[name="csrf-token"]')
       .getAttribute("content"),
   };
+  logger.info("axios headers :", JSON.stringify(axios.defaults.headers));
   const token = getFromLocalStorage("authToken");
   const email = getFromLocalStorage("authEmail");
+  logger.info("token :", token);
+  logger.info("email :", email);
+
   if (token && email) {
     axios.defaults.headers["X-Auth-Email"] = email;
     axios.defaults.headers["X-Auth-Token"] = token;
