@@ -71,3 +71,4 @@ gem "responders"
 gem "webpacker"
 
 gem "react-rails"
+gem "simplecov", require: false, group: :test
