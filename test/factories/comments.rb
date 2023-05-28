@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :comment do
-    content { "MyText" }
-    task { nil }
-    user { nil }
+    user
+    task
+    content { Faker::Lorem.paragraph }
   end
 end
