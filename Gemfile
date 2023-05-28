@@ -70,6 +70,7 @@ end
 gem "responders"
 gem "webpacker"
 
+gem "pundit"
 gem "react-rails"
 gem "simplecov", require: false, group: :test
 
