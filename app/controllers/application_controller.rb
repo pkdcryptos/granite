@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :handle_authorization_error
 
   def handle_authorization_error
-    render_error("Access denied. You are not authorized to perform this action.", :forbidden)
+    render_error(t("authorization.denied"), :forbidden)
   end
 
   def authenticate_user_using_x_auth_token
