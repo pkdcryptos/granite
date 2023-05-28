@@ -2,11 +2,6 @@
 
 class TasksController < ApplicationController
   before_action :load_task!, only: %i[show update destroy]
-  # def index
-  #   tasks = Task.all
-  #   render status: :ok, json: { tasks: }
-
-  # end
 
   def index
     tasks = Task.all.as_json(include: { assigned_user: { only: %i[name id] } })
@@ -15,19 +10,23 @@ class TasksController < ApplicationController
 
   def create
     task = current_user.created_tasks.new(task_params)
+    authorize task
     task.save!
     render_notice(t("successfully_created", entity: "Task"))
   end
 
   def show
+    authorize @task
   end
 
   def update
+    authorize @task
     @task.update!(task_params)
     render_notice(t("successfully_updated"))
   end
 
   def destroy
+    authorize @task
     @task.destroy!
     render_json
   end
