@@ -2,6 +2,7 @@
 
 class Task < ApplicationRecord
   RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
+  MAX_TITLE_LENGTH = 500
   enum :progress, { pending: "pending", completed: "completed" }, default: :pending
   enum :status, { unstarred: "unstarred", starred: "starred" }, default: :unstarred
   belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"

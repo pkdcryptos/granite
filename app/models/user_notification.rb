@@ -14,13 +14,13 @@ class UserNotification < ApplicationRecord
         Date.parse(last_notification_sent_date.to_s)
       end
     rescue ArgumentError
-      errors.add(:last_notification_sent_date, "must be a valid date")
+      errors.add(:last_notification_sent_date, t("date.invalid"))
     end
 
     def last_notification_sent_date_cannot_be_in_the_past
       if last_notification_sent_date.present? &&
           last_notification_sent_date < Time.zone.today
-        errors.add(:last_notification_sent_date, "can't be in the past")
+        errors.add(:last_notification_sent_date, t("date.cant_be_in_past"))
       end
     end
 end
