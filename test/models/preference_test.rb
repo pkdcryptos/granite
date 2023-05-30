@@ -3,7 +3,25 @@
 require "test_helper"
 
 class PreferenceTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    user = create(:user)
+    @preference = user.preference
+  end
+
+  def test_notification_delivery_hour_must_be_present_and_valid
+    @preference.notification_delivery_hour = nil
+    assert @preference.invalid?
+    puts "preference.errors.messages: #{@preference.errors.messages[:notification_delivery_hour]}"
+    puts "errors.messages.blank: #{t('errors.messages.blank')}"
+    assert_includes @preference.errors.messages[:notification_delivery_hour], t("errors.messages.blank")
+  end
+
+  def test_notification_delivery_hour_should_be_in_range
+    invalid_hours = [-10, -0.5, 10.5, 23.5, 24]
+
+    invalid_hours.each do |hour|
+      @preference.notification_delivery_hour = hour
+      assert @preference.invalid?
+    end
+  end
 end
