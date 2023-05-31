@@ -3,7 +3,7 @@
 class Tasks::ReportsController < ApplicationController
   def create
     puts "current_user: #{current_user.id} report_path: #{report_path}"
-    ReportsWorker.perform_async(current_user.id)
+    ReportsWorker.perform_async(current_user.id, report_path)
     render_notice(t("in_progress", action: "Report generation"))
   end
 

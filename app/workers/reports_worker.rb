@@ -3,8 +3,7 @@
 class ReportsWorker
   include Sidekiq::Worker
 
-  def perform(user_id)
-    report_path = "/home/app/bigbinary/granite/tmp/granite_task_report.pdf"
+  def perform(user_id, report_path)
     tasks = Task.accessible_to(user_id)
     puts "user_id: #{user_id}"
     content = ApplicationController.render(
